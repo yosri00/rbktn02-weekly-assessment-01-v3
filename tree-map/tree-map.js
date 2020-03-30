@@ -49,7 +49,7 @@ Tree.prototype.addChild = function(child) {
     child = new Tree(child);
   }
 
-  if (!this.isDescendant(child)) {
+  if (!this.(child)) {
     this.children.push(child);
   } else {
     ('That child is already a child of this tree');

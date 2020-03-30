@@ -28,10 +28,46 @@
   *  root1.value // still 1
   */
 
+
+
 var Tree = function(value) {
   this.value = value;
   this.children = [];
 };
 
+Tree.prototype.map = function (callback) {
+  var newTree = new Tree(callback(this.value));
+  for (var i = 0; i < this.children.length; i++) {
+    newTree.children.push(this.children[i].map(callback));
+  }
+  return newTree;
+};
+
+
+Tree.prototype.addChild = function(child) {
+  if (!child || !(child instanceof Tree)) {
+    child = new Tree(child);
+  }
+
+  if (!this.isDescendant(child)) {
+    this.children.push(child);
+  } else {
+    ('That child is already a child of this tree');
+  }
+ 
+  return child;
+};
+
+
+
+Tree.prototype.removeChild = function(child) {
+  var index = this.children.indexOf(child);
+  if (index !== -1) {
+  
+    this.children.splice(index, 1);
+  } else {
+    ('That node is not an immediate child of this tree');
+  }
+};
 
 

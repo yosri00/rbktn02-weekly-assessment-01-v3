@@ -23,7 +23,7 @@
   *  newTree.value // 2
   *  newTree.children[0].value // 4
   *  newTree.children[1].value // 6
-  *  newTree.children[0].children[1].value // 10
+  *  newTree.children[0].children[1].value // 100
   *  newTree.children[1].children[1].value // 14
   *  root1.value // still 1
   */
@@ -33,6 +33,7 @@
 var Tree = function(value) {
   this.value = value;
   this.children = [];
+  
 };
 
 Tree.prototype.map = function (callback) {
